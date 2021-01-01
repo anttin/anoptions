@@ -11,10 +11,10 @@ class Options(object):
     """
     Example:
       parameters = [
-        Parameter("host",   str,            "mqtt_host"),
-        Parameter("port",   int,            "mqtt_port"),
-        Parameter("topic",  str,            "mqtt_topic"),
-        Parameter("dir",    str,            "filename_dir"),
+        Parameter("host",   str,  "mqtt_host",  default="127.0.0.1"),
+        Parameter("port",   int,  "mqtt_port"),
+        Parameter("topic",  str,  "mqtt_topic"),
+        Parameter("dir",    str,  "filename_dir"),
         Parameter("silent", Parameter.flag, "silent")
       ]
     """
@@ -105,6 +105,11 @@ class Options(object):
     for x in self.parameters:
       if x.func is Parameter.flag and x.var_name not in result:
         result[x.var_name] = False
+
+    # set defaults wherever they exist and no values have been inputted
+    for x in self.parameters:
+      if x.default is not None and x.var_name not in result:
+        result[x.var_name] = x.default
 
     return result
 

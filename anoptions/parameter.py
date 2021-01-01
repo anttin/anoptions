@@ -10,8 +10,8 @@ class Parameter(object):
 
 
   @staticmethod
-  def dummy(*argv):
-    return *argv
+  def dummy(arg):
+    return arg
 
 
   @staticmethod

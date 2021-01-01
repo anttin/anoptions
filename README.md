@@ -4,7 +4,7 @@ A python3 module to assist in defining application options and collecting user i
 
 ## Install
 
-`pip3 install anparams`
+`pip3 install anoptions`
 
 ## Usage
 
@@ -27,7 +27,7 @@ def main(argv):
     Parameter("port",   int,  "mqtt_port"),
     Parameter("topic",  str,  "mqtt_topic"),
     Parameter("dir",    str,  "directory"),
-    Parameter("delta",  str,  "delta", short_name='D'),
+    Parameter("delta",  int,  "delta", short_name='D'),
     Parameter("silent", bool, "silent")
   ]
 

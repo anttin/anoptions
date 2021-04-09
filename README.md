@@ -1,4 +1,4 @@
-# anparams
+# anoptions
 
 A python3 module to assist in defining application options and collecting user input for them from command line and environment variables.
 
@@ -18,8 +18,9 @@ For flags where a more logical input parsing (for example silent='false' to be i
 ## Example
 
 Code (main.py):
-```
-from anparams import Parameter, Options
+
+```python
+from anoptions import Parameter, Options
 
 def main(argv):
   parameters = [
@@ -42,7 +43,9 @@ if __name__ == "__main__":
 ```
 
 Run:
-```
-$ APPNAME_PORT=1232 APPNAME_SILENT=1 python3 main.py -d /tmp --host 10.1.2.3 -D 60
+
+```shell
+APPNAME_PORT=1232 APPNAME_SILENT=1 python3 main.py -d /tmp --host 10.1.2.3 -D 60
 {'mqtt_port': 1232, 'silent': True, 'filename_dir': '/tmp', 'mqtt_host': '10.1.2.3', 'delta': 60}
 ```
+

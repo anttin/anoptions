@@ -1,13 +1,15 @@
 class Parameter(object):
 
-  def __init__(self, name, func, var_name, short_name=None, default=None):
+
+  def __init__(self, name, func, var_name, short_name=None, default=None, always_include=False):
     super().__init__()
 
-    self.name       = name
-    self.func       = func
-    self.var_name   = var_name
-    self.short_name = short_name[0] if short_name is not None and len(short_name) > 0 else name[0]
-    self.default    = default 
+    self.name           = name
+    self.func           = func
+    self.var_name       = var_name
+    self.short_name     = short_name[0] if short_name is not None and len(short_name) > 0 else name[0]
+    self.default        = default
+    self.always_include = always_include
 
 
   @staticmethod
@@ -49,6 +51,3 @@ class Parameter(object):
       return (value.upper() in ("1", "TRUE"))
     else:
       return bool(value)
-
-
-

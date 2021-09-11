@@ -5,7 +5,7 @@ from .env import Env
 
 
 class Options(object):
-  def __init__(self, parameters, argvs, env_prefix=None):
+  def __init__(self, parameters, argvs, env_prefix=None, always_include_all=False):
     super().__init__()
 
     """
@@ -22,6 +22,10 @@ class Options(object):
     self.parameters = parameters
     self.argvs      = argvs
     self.env_prefix = env_prefix
+
+    if always_include_all is True:
+      for x in self.parameters:
+        x.always_include = True
 
     # replace the regular bool function with one in Parameter
     # to ensure that we get values evaluated correctly
@@ -108,7 +112,10 @@ class Options(object):
 
     # set defaults wherever they exist and no values have been inputted
     for x in self.parameters:
-      if x.default is not None and x.var_name not in result:
+      if (
+        (x.default is not None or x.always_include is True) and
+        x.var_name not in result
+      ):
         result[x.var_name] = x.default
 
     return result

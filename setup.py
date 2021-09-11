@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="anoptions",
-    version="1.0.3",
+    version="1.0.4",
     author="anttin",
     author_email="muut.py@antion.fi",
     description="Module to assist in defining application options and collecting user input for them from command line and environment variables.",
